@@ -1,3 +1,1 @@
-a = 'qwerty'
-
-print(a)
+print('hello')
