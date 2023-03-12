@@ -1,0 +1,3 @@
+a = 'qwerty'
+
+print(a)
