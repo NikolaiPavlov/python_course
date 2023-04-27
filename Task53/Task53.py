@@ -23,6 +23,7 @@ def save_to_file(contact: list) -> None:
 
     with open(path, 'w', encoding='UTF-8') as file:
         json.dump(contact, file, ensure_ascii=False)
+    print('Saved')
 
 def show_on_screen(contacts: list) -> None:
         decode_key = dict(
@@ -31,8 +32,8 @@ def show_on_screen(contacts: list) -> None:
             contacts = 'Телефон'
         )
         pretty_text = str()
-        for num, elem in enumerate(contacts, 1):
-            pretty_text += f'Контакт #{num}:\n'
+        for num, elem in enumerate(contacts, 0):
+            pretty_text += f'Контакт №{num}:\n'
             pretty_text += '\n'.join(f'{decode_key[k]}: {v}' for k, v in elem.items())
             pretty_text += '\n________\n'
         print(pretty_text)
@@ -45,15 +46,29 @@ def new_contact() -> dict:
     )
 
 def delete_contact() -> None:
-    pass
+    enumerate(load_from_file(), 0)
+    show_on_screen(load_from_file())
+
+    d = int(input('Введите номер контакта для удаления:\n>>> '))
+
+    contacts = load_from_file()
+    contacts.pop(d)
+    save_to_file(contacts)
 
 def change_contact() -> None:
-    pass
+    enumerate(load_from_file(), 0)
+    show_on_screen(load_from_file())
+
+    d = int(input('Введите номер контакта для изменения:\n>>> '))
+
+    contacts = load_from_file()
 
 def main() -> None:
     contacts = load_from_file()
-    contacts.append(new_contact())
-    save_to_file(contacts)
+    #contacts.append(new_contact())
+    #show_on_screen(contacts)
+    #save_to_file(contacts)
+    delete_contact()
 
 if __name__ == '__main__':
     main()
