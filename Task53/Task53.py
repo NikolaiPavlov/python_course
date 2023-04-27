@@ -21,7 +21,7 @@ def load_from_file():
 def save_to_file(contact: list) -> None:
     path = file_path()
 
-    with open(path, 'a', encoding='UTF-8') as file:
+    with open(path, 'w', encoding='UTF-8') as file:
         json.dump(contact, file, ensure_ascii=False)
 
 def show_on_screen(contacts: list) -> None:
@@ -36,6 +36,7 @@ def show_on_screen(contacts: list) -> None:
             pretty_text += '\n'.join(f'{decode_key[k]}: {v}' for k, v in elem.items())
             pretty_text += '\n________\n'
         print(pretty_text)
+
 def new_contact() -> dict:
     return dict(
         first_name = input('Введите имя контакта:\n>>>'),
@@ -43,17 +44,16 @@ def new_contact() -> dict:
         contacts = input('Введите номер телефона:\n>>>')
     )
 
-def change_contact(ind: int, contact: dict) -> None:
-    global phone_book
-    phone_book.pop(ind-1)
-    phone_book.insert(ind-1, contact)
-
 def delete_contact() -> None:
+    pass
 
+def change_contact() -> None:
+    pass
 
 def main() -> None:
-    data = load_from_file()
-    show_on_screen(data)
+    contacts = load_from_file()
+    contacts.append(new_contact())
+    save_to_file(contacts)
 
 if __name__ == '__main__':
     main()
