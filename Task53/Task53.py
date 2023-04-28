@@ -62,13 +62,17 @@ def change_contact() -> None:
     d = int(input('Введите номер контакта для изменения:\n>>> '))
 
     contacts = load_from_file()
+    contacts.pop(d)
+    contacts.insert(d, new_contact())
+    save_to_file(contacts)
 
 def main() -> None:
     contacts = load_from_file()
     #contacts.append(new_contact())
     #show_on_screen(contacts)
     #save_to_file(contacts)
-    delete_contact()
+    #delete_contact()
+    change_contact()
 
 if __name__ == '__main__':
     main()
