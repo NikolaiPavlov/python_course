@@ -1,5 +1,4 @@
 # Телефонный справочник
-# Time code: 48:49/2:11:22
 import os
 import json
 
