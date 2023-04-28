@@ -1,1 +1,0 @@
-[{"first_name": "Имя", "second_name": "Фамилия", "contacts": "Телефон"}, {"first_name": "Имя3", "second_name": "Фамилия3", "contacts": "Телефон3"}]
